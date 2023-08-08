@@ -44,7 +44,7 @@ export async function getCurrentPackageManager(): Promise<PackageManager> {
 			const { nodeLinker } = YAML.load(yarnrc) as {
 				nodeLinker: string;
 			};
-			if (nodeLinker !== 'node-modules') {
+			if (!(['node-modules', 'pnpm'].includes(nodeLinker))) {
 				cliError(
 					`
 					Error: Yarn Plug'n'Play not supported
